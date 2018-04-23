@@ -9,6 +9,7 @@ import { ContainerModule } from 'inversify';
 import { ResourceResolver } from "@theia/core/lib/common";
 import { WebSocketConnectionProvider, WidgetFactory, bindViewContribution, LabelProviderContribution } from '@theia/core/lib/browser';
 import { NavigatorTreeDecorator } from '@theia/navigator/lib/browser';
+// import { InputBox, InputBoxFactory, InputBoxProps, InputBoxValidator, InputBoxStyles } from '@theia/core/lib/browser/input-box';
 import { Git, GitPath, GitWatcher, GitWatcherPath, GitWatcherServer, GitWatcherServerProxy, ReconnectingGitWatcherServer } from '../common';
 import { GitViewContribution, GIT_WIDGET_FACTORY_ID } from './git-view-contribution';
 import { bindGitDiffModule } from './diff/git-diff-frontend-module';
@@ -23,10 +24,11 @@ import { bindGitPreferences } from './git-preferences';
 import { bindDirtyDiff } from './dirty-diff/dirty-diff-module';
 import { bindBlame } from './blame/blame-module';
 import { GitRepositoryTracker } from './git-repository-tracker';
+import { GitCommitMessageValidator } from './git-commit-message-validator';
 
 import '../../src/browser/style/index.css';
 
-export default new ContainerModule(bind => {
+export default new ContainerModule((bind, unbind, isBound, rebind) => {
     bindGitPreferences(bind);
     bindGitDiffModule(bind);
     bindGitHistoryModule(bind);
@@ -53,4 +55,6 @@ export default new ContainerModule(bind => {
 
     bind(LabelProviderContribution).to(GitUriLabelProviderContribution).inSingletonScope();
     bind(NavigatorTreeDecorator).to(GitDecorator).inSingletonScope();
+
+    bind(GitCommitMessageValidator).toSelf().inSingletonScope();
 });
