@@ -9,7 +9,6 @@ import { ContainerModule } from 'inversify';
 import { ResourceResolver } from "@theia/core/lib/common";
 import { WebSocketConnectionProvider, WidgetFactory, bindViewContribution, LabelProviderContribution } from '@theia/core/lib/browser';
 import { NavigatorTreeDecorator } from '@theia/navigator/lib/browser';
-// import { InputBox, InputBoxFactory, InputBoxProps, InputBoxValidator, InputBoxStyles } from '@theia/core/lib/browser/input-box';
 import { Git, GitPath, GitWatcher, GitWatcherPath, GitWatcherServer, GitWatcherServerProxy, ReconnectingGitWatcherServer } from '../common';
 import { GitViewContribution, GIT_WIDGET_FACTORY_ID } from './git-view-contribution';
 import { bindGitDiffModule } from './diff/git-diff-frontend-module';
@@ -28,7 +27,7 @@ import { GitCommitMessageValidator } from './git-commit-message-validator';
 
 import '../../src/browser/style/index.css';
 
-export default new ContainerModule((bind, unbind, isBound, rebind) => {
+export default new ContainerModule(bind => {
     bindGitPreferences(bind);
     bindGitDiffModule(bind);
     bindGitHistoryModule(bind);

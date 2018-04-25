@@ -7,7 +7,6 @@
 
 import { injectable } from 'inversify';
 import { Tree } from './tree';
-import { Color } from '../colors';
 import { Event, Emitter } from '../../common/event';
 
 /**
@@ -167,6 +166,20 @@ export namespace TreeDecoration {
      * For the sake of simplicity, we have merged the `font-style`, `font-weight`, and the `text-decoration` together.
      */
     export type FontStyle = 'normal' | 'bold' | 'italic' | 'oblique' | 'underline' | 'line-through';
+
+    /**
+     * A string that could be:
+     *
+     *  - one of the browser colors, (E.g.: `blue`, `red`, `magenta`),
+     *  - the case insensitive hexadecimal color code, (for instance, `#ee82ee`, `#20B2AA`, `#f09` ), or
+     *  - either the `rgb()` or the `rgba()` functions.
+     *
+     * For more details, see: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value.
+     *
+     * Note, it is highly recommended to use one of the predefined colors of Theia, so the desired color will
+     * look nice with both the `light` and the `dark` theme too.
+     */
+    export type Color = string;
 
     /**
      * Encapsulates styling information of the font.

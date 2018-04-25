@@ -9,7 +9,6 @@ import { inject, injectable } from 'inversify';
 import { Diagnostic } from 'vscode-languageserver-types';
 import URI from '@theia/core/lib/common/uri';
 import { notEmpty } from '@theia/core/lib/common/objects';
-import { Color } from '@theia/core/lib/browser/colors';
 import { Event, Emitter } from '@theia/core/lib/common/event';
 import { Tree } from '@theia/core/lib/browser/tree/tree';
 import { DepthFirstTreeIterator } from '@theia/core/lib/browser/tree/tree-iterator';
@@ -117,7 +116,7 @@ export class ProblemDecorator implements TreeDecorator {
         }
     }
 
-    protected getOverlayIconColor(marker: Marker<Diagnostic>): Color {
+    protected getOverlayIconColor(marker: Marker<Diagnostic>): TreeDecoration.Color {
         const { severity } = marker.data;
         switch (severity) {
             case 1: return 'var(--theia-error-color0)';
