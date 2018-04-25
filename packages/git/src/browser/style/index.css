@@ -149,9 +149,9 @@
 
 #theia-gitContainer .changesOuterContainer {
     overflow-y: auto;
-    flex-grow: 1;
     border-top: 1px solid var(--theia-layout-color4);
     width: 100%;
+    flex-grow: 1;
 }
 
 #theia-gitContainer .warn {

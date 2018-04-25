@@ -254,7 +254,7 @@ export class GitWidget extends VirtualWidget {
         return [headerContainer, changesContainer, lastCommit];
     }
 
-    createChildContainer(): HTMLElement {
+    protected createChildContainer(): HTMLElement {
         const container = super.createChildContainer();
         container.classList.add(GitWidget.Styles.MAIN_CONTAINER);
         return container;
